@@ -4,3 +4,10 @@ dist/
 logs/
 
 .env
+.env.test
+
+mongo/
+postgres/
+
+mongo-test/
+postgres-test/

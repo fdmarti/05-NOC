@@ -1,14 +1,17 @@
-import { ServerApp } from './presentation/server';
 import { envs } from './config/plugins/envar.plugin';
+import { MongoDataBase } from './data/mongo';
+import { ServerApp } from './presentation/server';
 
 (async () => {
 	await main();
 })();
 
-function main() {
-	// ServerApp.start();
+async function main() {
+	await MongoDataBase.connect({
+		mongoUrl: envs.MONGO_URL,
+		dbName: envs.MONGO_DB_NAME,
+	});
 
-	const email: string = envs.MAILER_EMAIL
-	console.log({email})
-
+	ServerApp.start();
+	
 }
